@@ -55,17 +55,38 @@ public class Arrays {
 //        }
 //        --------------------------------------------------------------------------------------------------------------
 //        FIND PAIRS FOR THE GIVEN SUM (METHOD 2) OPTIMAL SOLUTION
-        int[] nums = {1,2,3,4,5,6,7};
-        int sum = 9;
-        HashSet<Integer> set = new HashSet<>();
+//        int[] nums = {1,2,3,4,5,6,7};
+//        int sum = 9;
+//        HashSet<Integer> set = new HashSet<>();
+//
+//        for (int num : nums) {
+//            int complement = sum - num;
+//            if (set.contains(complement)) {
+//                System.out.println("(" + num + "," + complement + ")");
+//            }
+//            set.add(num);
+//        }
+//        --------------------------------------------------------------------------------------------------------------
+//        FIND COMMON ELEMENTS IN 3 SORTED ARRAYS (NOT OPTIMAL)
+//        int[] arr1 = {1,2,3};
+//        int[] arr2 = {3,4,5};
+//        int[] arr3 = {3,7,8};
+//        int common = 0;
+//
+//        for (int i = 0; i < arr1.length; i++) {
+//            for (int j = 0; j < arr2.length; j++) {
+//                for (int k = 0; k < arr3.length; k++) {
+//                    if (arr1[i] == arr2[j] && arr2[j] == arr3[k]) {
+//                        System.out.println("The Common element is: " + arr1[i]);
+//                    }
+//                }
+//            }
+//        }
+//        --------------------------------------------------------------------------------------------------------------
+//        FIND COMMON ELEMENTS IN 3 SORTED ARRAYS (OPTIMAL)
 
-        for (int num : nums) {
-            int complement = sum - num;
-            if (set.contains(complement)) {
-                System.out.println("(" + num + "," + complement + ")");
-            }
-            set.add(num);
-        }
+
+
 
 
 
