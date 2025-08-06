@@ -110,65 +110,126 @@ public class Arrays {
 //        System.out.println("Common elements are: " + commonElements);
 //        --------------------------------------------------------------------------------------------------------------
 //        DELETE AN ELEMENT FROM AN ARRAY AT SPECIFIED POSITION
-        int[] arr = {1, 2, 3, 4, 5, 6, 7};
-        int target = 7;
+//        int[] arr = {1, 2, 3, 4, 5, 6, 7};
+//        int target = 7;
+//
+//// Variables to store information about the deleted element
+//        int deletedElement = -1; // Initialize with a value that indicates not found
+//        int deletedIndex = -1;   // Initialize with a value that indicates not found
+//
+//// First, find the target element and its index
+//        for (int i = 0; i < arr.length; i++) {
+//            if (arr[i] == target) {
+//                deletedElement = arr[i]; // Store the element
+//                deletedIndex = i;        // Store its index
+//                break;                   // Found it, no need to continue searching
+//            }
+//        }
+//
+//// Check if the target element was actually found
+//        if (deletedIndex != -1) {
+//            // If found, proceed with creating the new array without it
+//
+//            // We need a new array that is one element smaller
+//            int[] newArr = new int[arr.length - 1];
+//            int newArrIndex = 0; // A pointer for the new array
+//
+//            // Go through the old array
+//            for (int i = 0; i < arr.length; i++) {
+//                // If the current element's index is NOT the one we want to delete...
+//                if (i != deletedIndex) {
+//                    // ...copy it to the new array
+//                    newArr[newArrIndex] = arr[i];
+//                    newArrIndex++; // Move the pointer for the new array
+//                }
+//                // If it IS the target index, we simply do nothing and "skip" it
+//            }
+//
+//            // Now, the 'newArr' has the result
+//            arr = newArr;
+//
+//            // Let's print the result to see if it worked
+//            System.out.println("The new array is:");
+//            for (int num : arr) {
+//                System.out.print(num + " ");
+//            }
+//            System.out.println(); // Move to the next line for cleaner output
+//
+//            // Print the information about the deleted element
+//            System.out.println("The deleted element is: " + deletedElement);
+//            System.out.println("It was originally present at index: " + deletedIndex);
+//
+//        } else {
+//            // If the target element was not found in the array
+//            System.out.println("The element " + target + " was not found in the array.");
+//            System.out.print("The array remains: ");
+//            for (int num : arr) {
+//                System.out.print(num + " ");
+//            }
+//            System.out.println();
+//        }
+//        --------------------------------------------------------------------------------------------------------------
+//        SEGREGATE 0s AND 1s IN AN ARRAY
+//        int[] arr = {0,1,0,1,0,1,0,1,1,0};
+//        int j = 0;
+//
+//        for (int i = 0; i < arr.length; i++) {
+//            if (arr[i] == 0) {
+//                arr[j++] = arr[i];
+//            }
+//        }
+//
+//        while (j < arr.length) {
+//            arr[j++] = 1;
+//        }
+//
+//        for (int k = 0; k < arr.length; k++) {
+//            System.out.print(arr[k] + " ");
+//        }
+//        --------------------------------------------------------------------------------------------------------------
+//        SEGREGATE 0s AND 1s IN AN ARRAY (Two-Pointer Optimized)
+        int[] arr = {0, 1, 0, 1, 0, 1, 0, 1, 1, 0};
 
-// Variables to store information about the deleted element
-        int deletedElement = -1; // Initialize with a value that indicates not found
-        int deletedIndex = -1;   // Initialize with a value that indicates not found
+        // Initialize two pointers
+        int left = 0;
+        int right = arr.length - 1;
 
-// First, find the target element and its index
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == target) {
-                deletedElement = arr[i]; // Store the element
-                deletedIndex = i;        // Store its index
-                break;                   // Found it, no need to continue searching
+        // Loop until the pointers cross each other
+        while (left <= right) {
+            // Move 'left' pointer forward as long as it points to a 0
+            // and hasn't crossed the 'right' pointer.
+            while (left <= right && arr[left] == 0) {
+                left++;
+            }
+
+            // Move 'right' pointer backward as long as it points to a 1
+            // and hasn't crossed the 'left' pointer.
+            while (left <= right && arr[right] == 1) {
+                right--;
+            }
+
+            // If 'left' is still less than 'right', it means:
+            // arr[left] is 1 (because the first while loop stopped)
+            // arr[right] is 0 (because the second while loop stopped)
+            // So, we need to swap them to put 0 on the left and 1 on the right.
+            if (left < right) {
+                // Perform the swap
+                int temp = arr[left];
+                arr[left] = arr[right];
+                arr[right] = temp;
+
+                // Move both pointers inwards after the swap
+                left++;
+                right--;
             }
         }
 
-// Check if the target element was actually found
-        if (deletedIndex != -1) {
-            // If found, proceed with creating the new array without it
-
-            // We need a new array that is one element smaller
-            int[] newArr = new int[arr.length - 1];
-            int newArrIndex = 0; // A pointer for the new array
-
-            // Go through the old array
-            for (int i = 0; i < arr.length; i++) {
-                // If the current element's index is NOT the one we want to delete...
-                if (i != deletedIndex) {
-                    // ...copy it to the new array
-                    newArr[newArrIndex] = arr[i];
-                    newArrIndex++; // Move the pointer for the new array
-                }
-                // If it IS the target index, we simply do nothing and "skip" it
-            }
-
-            // Now, the 'newArr' has the result
-            arr = newArr;
-
-            // Let's print the result to see if it worked
-            System.out.println("The new array is:");
-            for (int num : arr) {
-                System.out.print(num + " ");
-            }
-            System.out.println(); // Move to the next line for cleaner output
-
-            // Print the information about the deleted element
-            System.out.println("The deleted element is: " + deletedElement);
-            System.out.println("It was originally present at index: " + deletedIndex);
-
-        } else {
-            // If the target element was not found in the array
-            System.out.println("The element " + target + " was not found in the array.");
-            System.out.print("The array remains: ");
-            for (int num : arr) {
-                System.out.print(num + " ");
-            }
-            System.out.println();
+        // Print the segregated array
+        System.out.println("Segregated array (Two-Pointer):");
+        for (int k = 0; k < arr.length; k++) {
+            System.out.print(arr[k] + " ");
         }
-
+        System.out.println(); // For a new line after printing
 
 
 
