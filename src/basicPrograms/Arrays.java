@@ -2,6 +2,7 @@ package basicPrograms;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Scanner;
 
 public class Arrays {
     public static void main(String[] args) {
@@ -188,48 +189,121 @@ public class Arrays {
 //        }
 //        --------------------------------------------------------------------------------------------------------------
 //        SEGREGATE 0s AND 1s IN AN ARRAY (Two-Pointer Optimized)
-        int[] arr = {0, 1, 0, 1, 0, 1, 0, 1, 1, 0};
+//        int[] arr = {0, 1, 0, 1, 0, 1, 0, 1, 1, 0};
+//
+//        // Initialize two pointers
+//        int left = 0;
+//        int right = arr.length - 1;
+//
+//        // Loop until the pointers cross each other
+//        while (left <= right) {
+//            // Move 'left' pointer forward as long as it points to a 0
+//            // and hasn't crossed the 'right' pointer.
+//            while (left <= right && arr[left] == 0) {
+//                left++;
+//            }
+//
+//            // Move 'right' pointer backward as long as it points to a 1
+//            // and hasn't crossed the 'left' pointer.
+//            while (left <= right && arr[right] == 1) {
+//                right--;
+//            }
+//
+//            // If 'left' is still less than 'right', it means:
+//            // arr[left] is 1 (because the first while loop stopped)
+//            // arr[right] is 0 (because the second while loop stopped)
+//            // So, we need to swap them to put 0 on the left and 1 on the right.
+//            if (left < right) {
+//                // Perform the swap
+//                int temp = arr[left];
+//                arr[left] = arr[right];
+//                arr[right] = temp;
+//
+//                // Move both pointers inwards after the swap
+//                left++;
+//                right--;
+//            }
+//        }
+//
+//        // Print the segregated array
+//        System.out.println("Segregated array (Two-Pointer):");
+//        for (int k = 0; k < arr.length; k++) {
+//            System.out.print(arr[k] + " ");
+//        }
+//        System.out.println(); // For a new line after printing
+//        --------------------------------------------------------------------------------------------------------------
+//        REMOVE DUPLICATE ELEMENTS FROM AN UNSORTED ARRAY (OPTIMAL WAY)
+//        int[] arr = {1,2,3,3,5,6,7};
+//        HashSet<Integer> set = new HashSet<>();
+//        boolean flag = false;
+//
+//        for (int i = 0; i < arr.length; i++) {
+//            if (set.add(arr[i]) == false) {
+//                flag = true;
+//                System.out.println("The duplicate is " + arr[i]);
+//            }
+//        }
+//
+//        if (flag == false) {
+//            System.out.println("No Duplicates");
+//        }
+//        --------------------------------------------------------------------------------------------------------------
+//        REMOVE DUPLICATE ELEMENTS FROM AN UNSORTED ARRAY (NON OPTIMAL)
+//        int[] arr = {1,2,3,4,5};
+//		  boolean foundDuplicate = false;
+//
+//		  for(int i = 0; i < arr.length; i++) {
+//			for(int j = i + 1; j < arr.length; j++) {
+//				if(arr[i] == arr[j]) {
+//					foundDuplicate = true;
+//					System.out.println("Yes");
+//				}
+//				}
+//			}
+//		  if (!foundDuplicate) {
+//		    System.out.println("No duplicates found");
+//		  }
+//        --------------------------------------------------------------------------------------------------------------
+//        FIND SECOND SMALLEST NUMBER
+//        int[] arr = {1,4,2,6,5,7,3};
+//
+//        int smallest = Integer.MAX_VALUE;
+//        int secondSmallest = Integer.MAX_VALUE;
+//
+//        if (arr == null || arr.length < 2) {
+//            System.out.println("Array cannot be Null and length cannot be less than 2.");
+//            return;
+//        }
+//
+//        for (int i = 0; i < arr.length; i++) {
+//            int currentNum = arr[i];
+//
+//
+//            if (currentNum < smallest) {
+//                secondSmallest = smallest;
+//                smallest = currentNum;
+//            } else if (currentNum < secondSmallest && currentNum != smallest) {
+//                secondSmallest = currentNum;
+//            }
+//        }
+//
+//        System.out.println("Second smallest is:" + secondSmallest);
+//        --------------------------------------------------------------------------------------------------------------
 
-        // Initialize two pointers
-        int left = 0;
-        int right = arr.length - 1;
+        int n = 4;
+        int m = 5;
 
-        // Loop until the pointers cross each other
-        while (left <= right) {
-            // Move 'left' pointer forward as long as it points to a 0
-            // and hasn't crossed the 'right' pointer.
-            while (left <= right && arr[left] == 0) {
-                left++;
+        for (int i = 1; i <= 4; i++) {
+            for (int j = 1; j <= 5; j++) {
+                if (i == 1 || j == 1 || i == n || j == m) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
             }
-
-            // Move 'right' pointer backward as long as it points to a 1
-            // and hasn't crossed the 'left' pointer.
-            while (left <= right && arr[right] == 1) {
-                right--;
-            }
-
-            // If 'left' is still less than 'right', it means:
-            // arr[left] is 1 (because the first while loop stopped)
-            // arr[right] is 0 (because the second while loop stopped)
-            // So, we need to swap them to put 0 on the left and 1 on the right.
-            if (left < right) {
-                // Perform the swap
-                int temp = arr[left];
-                arr[left] = arr[right];
-                arr[right] = temp;
-
-                // Move both pointers inwards after the swap
-                left++;
-                right--;
-            }
+            System.out.println();
         }
 
-        // Print the segregated array
-        System.out.println("Segregated array (Two-Pointer):");
-        for (int k = 0; k < arr.length; k++) {
-            System.out.print(arr[k] + " ");
-        }
-        System.out.println(); // For a new line after printing
 
 
 
